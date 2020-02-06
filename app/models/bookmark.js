@@ -22,13 +22,13 @@ const bookmarkSchema = new Schema({
     }
 })
 bookmarkSchema.pre('save', function (next) {
-    var self = this;
+    const self = this;
     self.hashedUrl = sh.unique(self.original_url)    
     next()
 
 }) 
 bookmarkSchema.pre('findOneAndUpdate', function (next) {
-    var self = this;
+    const self = this;
     self._update.hashedUrl = sh.unique(self._update.original_url)  
     console.log(self.hashedUrl)
     next()
